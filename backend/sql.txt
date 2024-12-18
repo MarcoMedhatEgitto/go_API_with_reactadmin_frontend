@@ -1,0 +1,40 @@
+create table crud
+(
+    id                             serial
+        constraint crud_pk
+            primary key,
+    user_ssh                       text,
+    password_ssh                   text,
+    distro_installata              text,
+    ip                             text,
+    lista_dei_programmi_installati text
+);
+
+alter table crud
+    owner to postgres;
+
+create table swarmuno
+(
+    uuid              text,
+    nome              text,
+    file_content_text text,
+    server_id         integer
+        constraint swarmuno_crud_id_fk
+            references crud,
+    id                integer default nextval('swarnuno_id_seq'::regclass) not null
+        constraint swarnuno_pk
+            primary key
+);
+
+alter table swarmuno
+    owner to postgres;
+
+
+
+
+
+
+
+
+
+
